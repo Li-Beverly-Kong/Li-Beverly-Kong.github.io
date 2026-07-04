@@ -1,6 +1,5 @@
 ---
 permalink: /
-title: "Home"
 author_profile: true
 redirect_from:
   - /about/
@@ -16,31 +15,26 @@ redirect_from:
     Renmin University of China. I received my B.S. in Computer Science and Technology from Xu Teli College,
     the honors college of Beijing Institute of Technology.
   </p>
-  <p>
-    My current work connects rigorous optimization methods with deployed AI and platform systems, especially where
-    algorithms must make sequential decisions under real constraints. I have worked on algorithmic user growth and
-    large-scale coupon allocation at ByteDance, and on LLM-powered product recommendation and data selection at Baidu.
-  </p>
 </section>
 
 <section class="home-section">
   <h2>Research Interests</h2>
 
   <ul class="interest-list">
-    <li><strong>Game Theory & Mechanism Design:</strong> designing incentives and allocation mechanisms for platforms where strategic behavior and real-world constraints matter.</li>
-    <li><strong>LLM Evaluation:</strong> studying how to evaluate model capabilities, risks, and awareness with clearer protocols and more reliable evidence.</li>
-    <li><strong>LLM Post-training:</strong> improving model behavior through data selection, supervision, distillation, and feedback-driven optimization.</li>
-    <li><strong>Decision Optimization:</strong> building optimization frameworks that move from theory to system practice in sequential and large-scale decisions.</li>
+    <li><strong>Game Theory & Mechanism Design:</strong></li>
+    <li><strong>LLM Evaluation:</strong></li>
+    <li><strong>LLM Post-training:</strong></li>
+    <li><strong>Decision Optimization:</strong> </li>
   </ul>
 
   <p>
-    I believe strong research should have a precise problem, a rigorous method, and a visible path toward real-world
-    consequence. I am drawn to questions where theory, systems, and human behavior meet: how to make better decisions,
-    how to evaluate intelligent systems, and how to turn mathematical structure into deployed value.
+    I genuinely enjoy the craft of proof and the quiet pleasure of making an idea mathematically clean. At the same time, I am persistent in chasing frontier problems, especially those emerging around large language models. Philosophically, I lean toward a materialist monism: I do not view consciousness as an independent substance, but as an abstraction over
+  physical and computational processes. In that sense, both human consciousness and AI "awareness" appear to me less like mysterious agency and more like complex, unconscious algorithms unfolding under structure and incentives — which means emotional AI is probably not the research path I will take, haha.
   </p>
   <p>
-    My goal is to develop research that is reproducible, practically useful, and intellectually honest. I want to
-    explain complex problems clearly, build systems that can be examined rather than merely admired, and keep human
-    judgment present as AI systems become more capable and more deeply embedded in society.
+    Beyond collaborative work on post-training and ongoing projects in LLM evaluation, much of my current research is
+  organized around optimization. I often describe my interests to friends in a funny way: sometimes I study mechanism
+  design, where the goal is to build rules so that players have no unintended room to optimize against the system;
+  sometimes I become the player myself, trying to find the best response under constraints lol
   </p>
 </section>
