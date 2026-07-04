@@ -5,12 +5,6 @@ permalink: /internships/
 author_profile: true
 ---
 
-<section class="page-hero">
-  <p class="eyebrow">Internships</p>
-  <h1>Internships & applied research</h1>
-  <p>Industry research and engineering work on user growth, decision optimization, and LLM-powered products.</p>
-</section>
-
 {% assign internship_count = site.internships | size %}
 {% if internship_count > 0 %}
   {% for post in site.internships reversed %}

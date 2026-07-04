@@ -6,13 +6,15 @@
 
 <div itemscope itemtype="http://schema.org/Person">
 
-  <div class="author__avatar">
-    {% if author.avatar contains "://" %}
-    	<img src="{{ author.avatar }}" alt="{{ author.name }}"  fetchpriority="high" />
-    {% else %}
-    	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}"  fetchpriority="high" />
-    {% endif %}
-  </div>
+  {% if author.avatar %}
+    <div class="author__avatar">
+      {% if author.avatar contains "://" %}
+      	<img src="{{ author.avatar }}" alt="{{ author.name }}"  fetchpriority="high" />
+      {% else %}
+      	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}"  fetchpriority="high" />
+      {% endif %}
+    </div>
+  {% endif %}
 
   <div class="author__content">
     <h3 class="author__name">{{ author.name }}</h3>
@@ -88,6 +90,10 @@
       {% if author.github %}
         <li><a href="https://github.com/{{ author.github }}"><i class="fab fa-fw fa-github icon-pad-right" aria-hidden="true"></i>GitHub</a></li>
       {% endif %}
+      <li><a href="{{ base_path }}/publications/"><i class="fas fa-fw fa-file-alt icon-pad-right" aria-hidden="true"></i>Publications</a></li>
+      <li><a href="{{ base_path }}/internships/"><i class="fas fa-fw fa-briefcase icon-pad-right" aria-hidden="true"></i>Internships</a></li>
+      <li><a href="{{ base_path }}/teaching/"><i class="fas fa-fw fa-chalkboard-teacher icon-pad-right" aria-hidden="true"></i>Teaching</a></li>
+      <li><a href="{{ base_path }}/cv/"><i class="fas fa-fw fa-id-card icon-pad-right" aria-hidden="true"></i>CV</a></li>
       {% if author.kaggle %}
         <li><a href="https://kaggle.com/{{ author.kaggle }}"><i class="fab fa-fw fa-kaggle icon-pad-right" aria-hidden="true"></i>Kaggle</a></li>
       {% endif %}      

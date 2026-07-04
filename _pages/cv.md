@@ -7,11 +7,9 @@ redirect_from:
   - /resume
 ---
 
-<section class="page-hero">
-  <p class="eyebrow">Curriculum Vitae</p>
-  <h1>Li Beverly Kong</h1>
-  <p>Graduate student in Artificial Intelligence, focused on decision optimization, mechanism design, and LLM evaluation.</p>
-</section>
+# Li Kong
+
+Graduate student in Artificial Intelligence, focused on decision optimization, mechanism design, and LLM evaluation.
 
 <div class="cv-list">
   <section>

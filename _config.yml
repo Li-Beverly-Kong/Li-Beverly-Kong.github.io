@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "mint" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Li Beverly Kong"
+title                    : "Li Kong"
 title_separator          : "-"
-name                     : &name "Li Beverly Kong"
-description              : &description "Li Beverly Kong's academic homepage, research interests, publications, internships, and teaching"
+name                     : &name "Li Kong"
+description              : &description "Li Kong's academic homepage, research interests, publications, internships, and teaching"
 url                      : https://li-beverly-kong.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,7 +24,7 @@ repository               : "Li-Beverly-Kong/Li-Beverly-Kong.github.io"
 author:
   # Biographic information
   avatar           :
-  name             : "Li Beverly Kong"
+  name             : "Li Kong"
   pronouns         : # example: "she/her"  
   bio              : "AI researcher focused on decision optimization, LLM evaluation, and mechanism design."
   location         : "Beijing, China"
