@@ -21,3 +21,7 @@ package-lock.json
 
 # Ignore files created by MacOS
 .DS_Store
+
+# Codex/local scratch directories; do not deploy or track these.
+work/
+outputs/
