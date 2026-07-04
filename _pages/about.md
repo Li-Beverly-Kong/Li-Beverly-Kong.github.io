@@ -6,8 +6,6 @@ redirect_from:
   - /about.html
 ---
 
-# Li Kong
-
 <section class="home-section">
   <h2>Profile</h2>
   <p>
