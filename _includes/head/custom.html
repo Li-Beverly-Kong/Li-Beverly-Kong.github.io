@@ -31,9 +31,7 @@
 
   body {
     background:
-      radial-gradient(circle at 12% 8%, rgba(246, 200, 95, 0.2), transparent 30rem),
-      radial-gradient(circle at 92% 18%, rgba(31, 157, 138, 0.16), transparent 32rem),
-      linear-gradient(180deg, #fffdf8 0%, #f7fbf8 55%, #fbfbff 100%);
+      linear-gradient(180deg, #fffdf8 0%, #f7fbf8 56%, #fbfbff 100%);
   }
 
   .masthead {
@@ -45,19 +43,17 @@
   .home-hero,
   .page-hero {
     margin-bottom: 2rem;
-    padding: 2.4rem;
-    border: 1px solid var(--soft-line);
-    border-radius: 1.1rem;
+    padding: 2.2rem 0 2.4rem;
+    border-top: 4px solid var(--accent-teal);
+    border-bottom: 1px solid var(--soft-line);
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.93), rgba(255, 255, 255, 0.72)),
-      linear-gradient(135deg, rgba(239, 100, 97, 0.15), rgba(31, 157, 138, 0.13));
-    box-shadow: var(--soft-shadow);
+      linear-gradient(90deg, rgba(246, 200, 95, 0.16), rgba(31, 157, 138, 0.11), rgba(79, 159, 217, 0.09));
   }
 
   .home-hero h1,
   .page-hero h1 {
     margin: 0 0 0.75rem;
-    font-size: clamp(2.6rem, 7vw, 5.4rem);
+    font-size: 4.8rem;
     line-height: 0.98;
     letter-spacing: 0;
   }
@@ -73,7 +69,7 @@
 
   .hero-lede {
     color: var(--accent-teal);
-    font-size: clamp(1.2rem, 2.1vw, 1.65rem);
+    font-size: 1.45rem;
     font-weight: 750;
     line-height: 1.42;
   }
@@ -88,7 +84,7 @@
 
   .home-section h2 {
     margin-top: 0;
-    font-size: clamp(1.65rem, 3vw, 2.5rem);
+    font-size: 2.1rem;
     line-height: 1.08;
   }
 
@@ -107,7 +103,7 @@
   .cv-list section {
     padding: 1.1rem;
     border: 1px solid var(--soft-line);
-    border-radius: 0.85rem;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.78);
     box-shadow: 0 10px 24px rgba(35, 43, 55, 0.06);
   }
@@ -151,7 +147,7 @@
   }
 
   .statement-section p {
-    font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+    font-size: 1.18rem;
     line-height: 1.7;
   }
 
@@ -163,7 +159,20 @@
   @media (max-width: 760px) {
     .home-hero,
     .page-hero {
-      padding: 1.6rem;
+      padding: 1.5rem 0 1.7rem;
+    }
+
+    .home-hero h1,
+    .page-hero h1 {
+      font-size: 3rem;
+    }
+
+    .hero-lede {
+      font-size: 1.22rem;
+    }
+
+    .home-section h2 {
+      font-size: 1.75rem;
     }
 
     .home-section {

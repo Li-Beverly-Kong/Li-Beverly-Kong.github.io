@@ -7,8 +7,8 @@ author_profile: true
 
 <section class="page-hero">
   <p class="eyebrow">Internships</p>
-  <h1>Internships & practice</h1>
-  <p>这里用于展示实习、研究助理、项目合作、实验室实践或产品原型经历。每段经历都可以作为 `_internships/` 里的一个 Markdown 条目维护。</p>
+  <h1>Internships & applied research</h1>
+  <p>Industry research and engineering work on user growth, decision optimization, and LLM-powered products.</p>
 </section>
 
 {% assign internship_count = site.internships | size %}
@@ -22,7 +22,7 @@ author_profile: true
       <span>Template</span>
       <h2>Research / Product Internship Title</h2>
       <p><strong>Organization</strong> · Season Year</p>
-      <p>用 2-3 句说明你的角色、项目目标、使用方法、交付成果，以及它如何连接你的研究兴趣。</p>
+      <p>Internship records will appear here once added to the collection.</p>
     </article>
   </div>
 {% endif %}

@@ -23,22 +23,22 @@ repository               : "Li-Beverly-Kong/Li-Beverly-Kong.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           :
   name             : "Li Beverly Kong"
   pronouns         : # example: "she/her"  
-  bio              : "Researcher / student interested in technology, learning, culture, and public meaning."
-  location         : "City, Country"
-  employer         : "Institution or Lab Name"
+  bio              : "AI researcher focused on decision optimization, LLM evaluation, and mechanism design."
+  location         : "Beijing, China"
+  employer         : "Gaoling School of Artificial Intelligence, Renmin University of China"
   uri              : # URL
-  email            : "your.name@example.com" 
+  email            : "Beverly_Kong@163.com" 
 
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/"
+  googlescholar    :
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : "https://orcid.org/"
+  orcid            :
   semantic         : # URL
   ssrn             : # URL
   pubmed           : 
@@ -87,7 +87,7 @@ publication_category:
   books:
     title: 'Books'
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Manuscripts'
   conferences:
     title: 'Conference Papers'
 
