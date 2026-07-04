@@ -19,10 +19,10 @@ redirect_from:
   <h2>Research Interests</h2>
 
   <ul class="interest-list">
-    <li><strong>Game Theory & Mechanism Design:</strong></li>
-    <li><strong>LLM Evaluation:</strong></li>
-    <li><strong>LLM Post-training:</strong></li>
-    <li><strong>Decision Optimization:</strong> </li>
+    <li><strong>Game Theory & Mechanism Design</strong></li>
+    <li><strong>LLM Evaluation</strong></li>
+    <li><strong>LLM Post-training</strong></li>
+    <li><strong>Decision Optimization</strong></li>
   </ul>
 
   <p>
