@@ -8,15 +8,15 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "air" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "mint" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Li Beverly Kong"
 title_separator          : "-"
 name                     : &name "Li Beverly Kong"
-description              : &description "Li Beverly Kong's academic homepage and curriculum vitae"
-url                      : https://aurora-kl.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
+description              : &description "Li Beverly Kong's academic homepage, research interests, publications, internships, and teaching"
+url                      : https://li-beverly-kong.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "aurora-kl/aurora-kl.github.io"
+repository               : "Li-Beverly-Kong/Li-Beverly-Kong.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -26,7 +26,7 @@ author:
   avatar           : "profile.png"
   name             : "Li Beverly Kong"
   pronouns         : # example: "she/her"  
-  bio              : "Researcher / Student / Builder interested in technology, people, and public meaning."
+  bio              : "Researcher / student interested in technology, learning, culture, and public meaning."
   location         : "City, Country"
   employer         : "Institution or Lab Name"
   uri              : # URL
@@ -51,7 +51,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "aurora-kl"
+  github           : "Li-Beverly-Kong"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -190,10 +190,8 @@ exclude:
   - package.json*
   - Rakefile
   - README
-  - outputs
   - tmp
   - vendor
-  - work
 keep_files:
   - .git
   - .svn
@@ -230,6 +228,9 @@ collections:
     output: true
     permalink: /:collection/:path/
   portfolio:
+    output: true
+    permalink: /:collection/:path/
+  internships:
     output: true
     permalink: /:collection/:path/
   talks:
@@ -284,6 +285,14 @@ defaults:
       author_profile: true
       share: true
       comment: true
+  # _internships
+  - scope:
+      path: ""
+      type: internships
+    values:
+      layout: single
+      author_profile: true
+      share: true
   # _talks
   - scope:
       path: ""

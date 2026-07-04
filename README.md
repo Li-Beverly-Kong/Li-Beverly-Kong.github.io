@@ -1,93 +1,44 @@
 # Li Beverly Kong Academic Homepage
 
-This site is now based on the mature open-source [Academic Pages](https://github.com/academicpages/academicpages.github.io) GitHub Pages template.
+This repository is based directly on the open-source [Academic Pages](https://github.com/academicpages/academicpages.github.io) GitHub Pages template.
 
-It keeps the original Academic Pages/Jekyll structure, but customizes the homepage into the desired two-step flow:
+The site has been customized into a more lively academic homepage:
 
-1. Initial homepage: sidebar identity plus a concise academic introduction.
-2. First click: expands personal profile, external websites, academic statement, and selected work.
-3. Second click: expands the detailed CV section.
+- Home: profile, external sites, academic statement, and research interests.
+- Publications: maintained through `_publications/`.
+- Internships: maintained through `_internships/`.
+- Teaching: maintained through `_teaching/`.
+- CV: a standalone structured CV page.
 
-## Important Files
+## Key Files
 
-- `_config.yml`: site title, URL, author sidebar, email, GitHub, Scholar, ORCID, and other global settings.
+- `_config.yml`: site metadata and sidebar identity.
 - `_data/navigation.yml`: top navigation.
-- `_pages/about.md`: homepage and two-step interaction.
-- `_pages/cv.md`: standalone CV page at `/cv/`.
-- `_includes/head/custom.html`: custom CSS for the redesigned homepage sections.
-- `work/static-backup/`: backup of the earlier pure HTML/CSS/JS version.
-- `work/academicpages-sample-content/`: original Academic Pages sample posts, publications, talks, teaching, and portfolio content.
+- `_pages/about.md`: homepage.
+- `_pages/publications.html`: publications page.
+- `_pages/internships.md`: internships page.
+- `_pages/teaching.html`: teaching page.
+- `_pages/cv.md`: CV page.
+- `_includes/head/custom.html`: custom visual styling.
 
-## Deployment
+## Deploy
 
-Push the full repository contents to your GitHub Pages repository:
-
-```text
-aurora-kl.github.io
-```
-
-Then in GitHub:
+Push to the `main` branch of:
 
 ```text
-Settings -> Pages -> Deploy from a branch -> main -> /root
+Li-Beverly-Kong/Li-Beverly-Kong.github.io
 ```
 
 GitHub Pages will build the Jekyll site automatically.
 
-## Edit Your Information
+## Add Content
 
-Start with `_config.yml`:
-
-- `title`
-- `name`
-- `description`
-- `url`
-- `repository`
-- `author.name`
-- `author.bio`
-- `author.location`
-- `author.employer`
-- `author.email`
-- `author.github`
-- `author.googlescholar`
-- `author.orcid`
-
-Then edit `_pages/about.md`:
-
-- homepage introduction
-- profile section
-- external links
-- academic statement
-- selected work
-- interactive CV content
-
-The standalone `/cv/` page lives in `_pages/cv.md`.
-
-## Adding Real Academic Content Later
-
-The mature Academic Pages template supports structured academic collections:
-
-- `_publications/`
-- `_talks/`
-- `_teaching/`
-- `_portfolio/`
-- `_posts/`
-
-The original sample content has been moved into `work/academicpages-sample-content/` so fake publications and talks do not appear on your live site. You can copy the structure from those examples when you are ready to add real content.
-
-## Local Preview
-
-If you have Ruby/Bundler ready:
-
-```bash
-bundle install
-bundle exec jekyll serve
-```
-
-Then open:
+Create Markdown entries in these folders:
 
 ```text
-http://localhost:4000
+_publications/
+_internships/
+_teaching/
 ```
 
-In this Codex workspace, downloading Ruby gems was attempted but stalled, so local Jekyll build verification was not completed here. The site is structured for GitHub Pages' normal Jekyll build pipeline.
+The original Academic Pages sample content has been removed so the live site does not show placeholder papers, talks, or posts.

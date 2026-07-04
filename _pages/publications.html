@@ -5,32 +5,42 @@ permalink: /publications/
 author_profile: true
 ---
 
+<section class="lbk-page-hero">
+  <p class="lbk-kicker">Publications</p>
+  <h1>Publications & writing</h1>
+  <p>论文、文章、项目报告和公开写作会集中放在这里。Academic Pages 支持把每篇 publication 作为 `_publications/` 里的一个 Markdown 条目来维护。</p>
+</section>
+
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+  <p class="lbk-note">You can also find publication updates on <a href="{{ site.author.googlescholar }}">Google Scholar</a>.</p>
 {% endif %}
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
+{% assign publication_count = site.publications | size %}
+{% if publication_count > 0 %}
+  {% if site.publication_category %}
+    {% for category in site.publication_category %}
+      {% assign title_shown = false %}
+      {% for post in site.publications reversed %}
+        {% if post.category != category[0] %}
+          {% continue %}
+        {% endif %}
+        {% unless title_shown %}
+          <h2>{{ category[1].title }}</h2><hr />
+          {% assign title_shown = true %}
+        {% endunless %}
+        {% include archive-single.html %}
+      {% endfor %}
+    {% endfor %}
+  {% else %}
     {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
       {% include archive-single.html %}
     {% endfor %}
-  {% endfor %}
+  {% endif %}
 {% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
+  <div class="lbk-empty">
+    <h2>Coming soon</h2>
+    <p>正式论文或公开文章可以稍后加入。新增方式：在 `_publications/` 中创建一个 Markdown 文件，并填写标题、日期、venue、excerpt 和链接。</p>
+  </div>
 {% endif %}
-
-
-

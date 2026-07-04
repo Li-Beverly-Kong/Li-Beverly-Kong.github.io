@@ -5,8 +5,32 @@ permalink: /teaching/
 author_profile: true
 ---
 
+<section class="lbk-page-hero">
+  <p class="lbk-kicker">Teaching</p>
+  <h1>Teaching & mentoring</h1>
+  <p>课程、助教、工作坊、学生指导和公开教学材料可以集中放在这里。Academic Pages 支持用 `_teaching/` 目录持续维护教学条目。</p>
+</section>
+
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+{% assign teaching_count = site.teaching | size %}
+{% if teaching_count > 0 %}
+  {% for post in site.teaching reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% else %}
+  <div class="lbk-card-list">
+    <article>
+      <span>Template</span>
+      <h2>Course / Teaching Assistant Role</h2>
+      <p><strong>Institution</strong> · Term Year</p>
+      <p>写课程名称、职责、主题、学生规模、你设计或维护的材料，以及教学收获。</p>
+    </article>
+    <article>
+      <span>Template</span>
+      <h2>Workshop / Mentoring</h2>
+      <p><strong>Program or community</strong> · Year</p>
+      <p>写工作坊、讲座、学生指导、社群教学或公开材料建设。</p>
+    </article>
+  </div>
+{% endif %}
