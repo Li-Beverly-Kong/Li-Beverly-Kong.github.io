@@ -1,40 +1,53 @@
 {
-  "name": "academic-pages",
-  "version": "0.8.1.1",
-  "description": "Academic Pages Mistakes Jekyll theme npm build scripts",
+  "name": "li-kong-academic-homepage",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@11.16.0",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "description": "Li Kong's academic homepage, built with Astro and Scholar Pages.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build --force",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "vitest run tests",
+    "test:content": "node scripts/check-content-variants.mjs",
+    "test:browser": "node scripts/check-content-variants.mjs --browser",
+    "verify": "pnpm test && pnpm astro check && pnpm build && node scripts/assert-built-site.mjs && pnpm test:content",
+    "check:release": "node scripts/check-release.mjs"
+  },
+  "author": "Li Kong",
+  "license": "MIT",
+  "keywords": [
+    "astro",
+    "theme",
+    "portfolio",
+    "academic",
+    "unocss"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/academicpages/academicpages.github.io"
-  },
-  "keywords": [
-    "jekyll",
-    "theme",
-    "minimal"
-  ],
-  "contributors": [
-    "Michael Rose",
-    "Robert Zupko"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/academicpages/academicpages.github.io/issues"
-  },
-  "homepage": "https://github.com/academicpages/academicpages.github.io",
-  "engines": {
-    "node": ">= 0.10.0"
+    "url": "https://github.com/Li-Beverly-Kong/Li-Beverly-Kong.github.io.git"
   },
   "dependencies": {
-    "jquery": "^3.7.1",
-    "plotly.js-dist-min": "^3.6.0"
+    "@astrojs/check": "0.9.10",
+    "@astrojs/mdx": "8.0.0",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "7.3.1",
+    "astro-seo": "^1.2.0",
+    "sharp": "0.35.4",
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.0"
   },
   "devDependencies": {
-    "jslint": "^0.12.1",
-    "onchange": "^7.1.0",
-    "uglify-js": "^3.19.3"    
-  },
-  "scripts": {
-    "uglify": "uglifyjs node_modules/jquery/dist/jquery.min.js assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js assets/js/theme.js -c -m -o assets/js/main.min.js",
-    "watch:js": "onchange \"assets/js/**/*.js\" -e \"assets/js/main.min.js\" -- npm run build:js",
-    "build:js": "npm run uglify"
+    "@iconify-json/academicons": "^1.2.4",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/ph": "^1.2.2",
+    "@playwright/test": "1.63.0",
+    "unocss": "^66.10.0",
+    "vitest": "^5.0.0"
   }
 }

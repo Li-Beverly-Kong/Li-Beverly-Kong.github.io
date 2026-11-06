@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PublicationList from "../components/PublicationList.astro";
+import { getAllPapers } from "../lib/papers";
+import siteConfig from "../side.config";
+
+const papers = getAllPapers();
+const pageTitle = siteConfig.pageTitles.researches.title || "Publications";
+const pageDescription = siteConfig.pageTitles.researches.description || "Publications by Li Kong.";
+---
+
+<Layout title={pageTitle} description={pageDescription} schemaType="CollectionPage">
+  <div class="page-stack">
+    <header class="page-header">
+      <p class="font-sans text-xs font-bold uppercase tracking-[0.12em] text-accent-600 dark:text-accent-300">
+        {papers.length} {papers.length === 1 ? "paper" : "papers"} · newest first
+      </p>
+      <h1 class="page-title">{pageTitle}</h1>
+    </header>
+
+    <section
+      class="content-section mx-auto w-full max-w-4xl py-4"
+      aria-label="Publications in reverse chronological order"
+      data-publication-total={papers.length}
+    >
+      {papers.length > 0 ? (
+        <PublicationList papers={papers} />
+      ) : (
+        <p data-empty-publications class="body-copy">No publications to display yet.</p>
+      )}
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,60 @@
+@inproceedings{kong2026saco,
+  title = {{SACO}: Sequence-Aware Constrained Optimization Framework for Coupon Distribution in E-commerce},
+  author = {Kong, Li and Wang, Bingzhe and Chen, Zhou and Hu, Suhan and Ma, Yuchao and Qi, Qi and Song, Suoyuan and Jin, Bicheng},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year = {2026},
+  month = {March},
+  volume = {40},
+  number = {17},
+  pages = {15027--15035},
+  doi = {10.1609/aaai.v40i17.38525},
+  url = {https://doi.org/10.1609/aaai.v40i17.38525},
+  abstract = {Coupon distribution is a critical marketing strategy used by online platforms to boost revenue and enhance user engagement. Regrettably, existing coupon distribution strategies fall far short of effectively leveraging the complex sequential interactions between platforms and users. This critical oversight, despite the abundance of e-commerce log data, has precipitated a performance plateau. In this paper, we focus on the scene that the platforms make sequential coupon distribution decision multiple times for various users, with each user interacting with the platform repeatedly. Based on this marketing scenario, we propose a novel marketing framework, named Sequence-Aware Constrained Optimization (SACO) framework, to directly devise coupon distribution policy for long-term revenue boosting. SACO framework enables optimized online decision-making in a variety of real-world marketing scenarios. It achieves this by seamlessly integrating three key characteristics, general scenarios, sequential modeling with more comprehensive historical data, and efficient iterative updates within a unified framework. Furthermore, empirical results on real-world industrial dataset, alongside public and synthetic datasets demonstrate the superiority of our framework.},
+  public = {yes},
+  keywords = {constrained optimization, coupon distribution, e-commerce}
+}
+
+@article{zhou2026tad,
+  title = {{TAD}: Temporal-Aware Trajectory Self-Distillation for Fast and Accurate Diffusion {LLM}},
+  author = {Zhou, Haoyang and Kong, Li and Ren, Shijie and Wang, Xiting and Liang, Shuang and Wang, Guowei and Pan, Zhenxuan},
+  journal = {arXiv preprint arXiv:2605.09536},
+  year = {2026},
+  month = {May},
+  url = {https://arxiv.org/abs/2605.09536},
+  abstract = {Diffusion large language models (dLLMs) offer a promising paradigm for parallel text generation, but in practice they face an accuracy-parallelism trade-off, where increasing tokens per forward (TPF) often degrades generation quality. Existing acceleration methods often gain speed at the cost of accuracy. To address this limitation, we propose TAD, a Temporal-Aware trajectory self-Distillation framework. During data construction, we condition a teacher model on both the prompt and the ground-truth response to generate decoding trajectories, recording the intermediate masked states throughout the process. Based on how many decoding steps remain before each masked token is revealed, we partition masked positions into near and distant subsets. For near tokens, we train the student with a hard cross-entropy loss using the teacher trajectory tokens as labels, encouraging confident predictions for tokens that are about to be decoded. For distant tokens, we apply a soft KL divergence loss between the teacher and student token distributions, providing softer supervision and preserving future planning knowledge. This temporal-aware partition naturally gives rise to two deployment configurations: a Quality model that prioritizes accuracy and a Speed model that favors more aggressive acceleration. Experiments show that TAD consistently improves the accuracy-parallelism trade-off. On LLaDA, it raises average accuracy from 46.2% to 51.6% with the Quality model and average AUP from 46.2 to 257.1 with the Speed model. Our code is available at: https://github.com/BHmingyang/TAD.},
+  public = {wp},
+  keywords = {diffusion LLM, self-distillation, post-training}
+}
+
+@inproceedings{kong2026geometry,
+  title = {Geometry-Aware Online Scheduling for {LLM} Serving: From Theoretical Bound to System Practice},
+  author = {Kong, Li and Qi, Qi and Ye, Yinyu and Zhou, Zijie},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2026},
+  month = {June},
+  url = {https://arxiv.org/abs/2606.22327},
+  abstract = {The rapid growth of interactive Large Language Model serving has made efficient management of dynamic Key-Value cache footprints increasingly important for inference performance. Modern inference systems overwhelmingly rely on time-centric scheduling heuristics, such as Shortest Job First. However, their classical guarantees are rooted in traditional scheduling modeling, failing to capture the highly dynamic, 2D spatio-temporal geometric growth specific to LLM inference mechanisms. To resolve this, we propose the geometry-aware online scheduling by introducing the Smallest Volume First (SVF) algorithm and its highly efficient variant, 1-bit SVF. Via a novel volume-certificate proof, we establish a worst-case approximation ratio for SVF that approaches 3 in the high-concurrency regime of LLM serving, substantially improving upon the prior best constant of 48. Building upon this core breakthrough, we complete a comprehensive theoretical taxonomy analyzing our algorithms across different traffic scenarios and information availability. Practically, we seamlessly integrate our approach as a plug-and-play layer in vLLM. Extensive evaluations on Llama-3.1 models demonstrate comprehensive performance gains: SVF delivers strong reductions in both average and tail latency, while 1-bit SVF, with merely a single bit of information, achieves competitive throughput and latency. This work establishes a theoretically sound and empirically proven approach for resolving memory-constrained scheduling in modern LLM deployments. To facilitate future research, our code is available at https://github.com/Li-Beverly-Kong/Geometry-Aware-Online-Scheduling.},
+  public = {yes},
+  keywords = {LLM serving, online scheduling, optimization}
+}
+
+@article{kong2026auction,
+  title = {Opening the Black Box of Neural Auction Mechanisms},
+  author = {Kong, Li and Liu, Zilong and Zhou, Haoyang and Liu, Hanbing and Qi, Qi},
+  journal = {arXiv preprint arXiv:2611.01981},
+  year = {2026},
+  month = {November},
+  url = {https://arxiv.org/abs/2611.01981},
+  abstract = {Neural auction design has emerged as a powerful paradigm within automated mechanism design for modern Web platforms. Because these learned mechanisms directly dictate critical economic outcomes, their lack of internal transparency raises significant auditability and trust concerns. Opening this black box post-hoc is therefore essential, yet presents two distinctive challenges: (1) activation contexts are dense, correlated numerical profiles devoid of explicit semantic structure, and (2) feature interpretations can only be falsifiably audited if they map to measurable auction states or outcomes. In this paper, we propose a post-hoc white-box auditing framework for unpacking trained neural auctions. Using CITransNet as a representative testbed, we first employ sparse autoencoders to decompose hidden representations while faithfully preserving downstream auction behavior. Anchoring feature interpretations to native economic targets, we validate them through activation prediction and causal interventions to isolate verified features from the reconstruction dictionary. Finally, applying this pipeline across varied auction settings, we show that the verified features can serve as analytical instruments to examine how internal representations modulate strategic misreporting incentives, align with Myerson's optimal auction, and support the diagnosis of individual auctions. Our work highlights the potential of white-box mechanism auditing to build the foundational trust necessary for neural auctions to be deployed as widely adopted Web technologies. To enhance research transparency and facilitate independent inspection, we publicly release the experimental results supporting our findings at https://github.com/Li-Beverly-Kong/opening-neural-auctions.},
+  public = {wp},
+  keywords = {mechanism design, neural auctions, interpretability, sparse autoencoders}
+}
+
+@article{kong2026consistency,
+  title = {Beyond Heuristic {DFL}: A Rigorous Consistency-Constrained Framework for Large-Scale Coupon Distribution},
+  author = {Kong, Li and Wang, Zitong and Wang, He and Chen, Zhou and Qi, Qi and Jin, Bicheng and Song, Suoyuan},
+  journal = {Manuscript under review},
+  year = {2026},
+  public = {wp},
+  keywords = {decision-focused learning, coupon distribution, consistency constraints}
+}

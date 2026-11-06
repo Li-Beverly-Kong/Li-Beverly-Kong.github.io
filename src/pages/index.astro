@@ -1,0 +1,402 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PublicationList from "../components/PublicationList.astro";
+import { getCollection } from "astro:content";
+import { getAllPapers } from "../lib/papers";
+import siteConfig from "../side.config";
+import { Image } from "astro:assets";
+
+const recentPosts = (await getCollection("posts"))
+  .filter((post) => !post.data.draft)
+  .sort(
+    (a, b) =>
+      new Date(b.data.publishedAt).getTime() -
+      new Date(a.data.publishedAt).getTime(),
+  )
+  .slice(0, 3);
+
+const papers = getAllPapers();
+const biographyEducation =
+  "I am a second-year master's student at the Gaoling School of Artificial Intelligence, Renmin University of China. I received my B.S. in Computer Science and Technology from Xu Teli Honors College, Beijing Institute of Technology.";
+const biographyResearch =
+  "I am an AI researcher interested in problems that are both intellectually intriguing and practically meaningful. My research interests span large language models, mechanism design, and intelligent systems, and I enjoy exploring new ideas across different areas of AI.";
+const researchQuestions = [
+  {
+    label: "Interpretable mechanism design",
+    question: "How can learned mechanisms remain interpretable and auditable?",
+  },
+  {
+    label: "Efficient language models",
+    question: "How can LLM training and serving become more efficient without sacrificing quality?",
+  },
+  {
+    label: "Decision optimization",
+    question: "How can predictive models support reliable large-scale decisions?",
+  },
+];
+const currentFocus = [
+  "Auditing neural auction mechanisms",
+  "Applying LLM post-training to domain-specific advertising applications",
+  "Exploring evaluation awareness in large language models",
+];
+const rawProfileImage = siteConfig.hero.profileImage.trim();
+const profileImageUrl = /^https?:/i.test(rawProfileImage)
+  ? rawProfileImage
+  : rawProfileImage.startsWith("/")
+    ? rawProfileImage
+    : new URL(
+        rawProfileImage.startsWith(".")
+          ? rawProfileImage
+          : `../${rawProfileImage}`,
+        import.meta.url,
+      ).href;
+---
+
+<Layout title="Home" description={siteConfig.hero.subheadline} schemaType="ProfilePage">
+  <div class="b-home">
+    <section class="b-hero relative isolate overflow-hidden" aria-labelledby="profile-name">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-br from-blue-100/80 via-white to-violet-100/70 dark:from-blue-950/45 dark:via-ink-950 dark:to-violet-950/35"></div>
+      <div class="absolute -left-28 -top-28 -z-10 h-96 w-96 rounded-full bg-blue-400/15 blur-3xl"></div>
+      <div class="absolute -bottom-36 right-0 -z-10 h-96 w-96 rounded-full bg-violet-400/15 blur-3xl"></div>
+
+      <div class="grid gap-9 px-6 py-10 md:grid-cols-12 md:gap-10 md:px-10 md:py-12 lg:py-16">
+        <div class="flex flex-col items-center text-center md:col-span-4">
+          <div class="w-40 overflow-hidden rounded-full border-4 border-white bg-white shadow-xl dark:border-ink-800 dark:bg-ink-900 sm:w-48">
+            <Image
+              src={profileImageUrl}
+              alt={siteConfig.hero.profileAlt || siteConfig.author}
+              width={siteConfig.hero.profileImageWidth || 720}
+              height={siteConfig.hero.profileImageHeight || 720}
+              layout="constrained"
+              fit="cover"
+              priority
+              class="aspect-square h-auto w-full object-cover"
+            />
+          </div>
+
+          <h1 id="profile-name" class="mt-5 font-heading text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.035em] text-ink-950 dark:text-white sm:text-[3.35rem]">
+            {siteConfig.author}
+          </h1>
+          <p class="b-profile-note">
+            {siteConfig.hero.headline}
+            <span class="b-profile-wink" role="img" aria-label="wink">😉</span>
+          </p>
+
+          <div class="mt-5 flex flex-wrap justify-center gap-3" aria-label="Contact links">
+            {siteConfig.socialLinks.map((link) => {
+              const opensNewTab = /^https?:/i.test(link.href);
+              return (
+                <a
+                  href={link.href}
+                  target={opensNewTab ? "_blank" : undefined}
+                  rel={opensNewTab ? "noopener noreferrer" : undefined}
+                  class="b-social-link"
+                  aria-label={link.label}
+                  title={link.label}
+                >
+                  <span class={`${link.icon} text-xl`} aria-hidden="true" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        <div class="md:col-span-8">
+          <div>
+            <p class="b-hero-eyebrow">About</p>
+            <h2 class="font-heading text-[2.35rem] font-semibold leading-tight tracking-[-0.03em] text-ink-950 dark:text-white sm:text-[2.75rem]">Biography</h2>
+          </div>
+
+          <p class="b-biography-copy">
+            {biographyEducation}
+          </p>
+          <p class="b-biography-copy">
+            {biographyResearch}
+          </p>
+
+          <div class="mt-8">
+            <div>
+              <p class="b-hero-eyebrow">What I think about</p>
+              <h3 class="font-heading text-[1.9rem] font-semibold leading-tight tracking-[-0.025em] text-ink-950 dark:text-white">Research Questions</h3>
+            </div>
+            <ul class="b-question-grid">
+              {researchQuestions.map((item, index) => (
+                <li class="b-question-card">
+                  <span class="b-question-number">0{index + 1}</span>
+                  <p class="b-question-label">{item.label}</p>
+                  <p class="b-question-copy">{item.question}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <aside class="b-currently" aria-labelledby="currently-title">
+            <div class="b-currently-heading">
+              <span class="b-currently-pulse" aria-hidden="true"></span>
+              <h3 id="currently-title">Currently</h3>
+            </div>
+            <ul>
+              {currentFocus.map((focus) => <li>{focus}</li>)}
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    {recentPosts.length > 0 && (
+      <section id="news" class="b-section b-news-section scroll-mt-24" aria-labelledby="news-title">
+        <div class="b-section-heading">
+          <div>
+            <p class="b-eyebrow">Updates</p>
+            <h2 id="news-title">News</h2>
+          </div>
+        </div>
+        <ol class="b-news-list mx-auto max-w-4xl">
+          {recentPosts.map((post, index) => (
+            <li class="b-news-item">
+              <time datetime={post.data.publishedAt.toISOString()}>
+                {post.data.publishedAt.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                })}
+              </time>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3>{post.data.title}</h3>
+                  {index === 0 && <span class="b-news-latest">Latest</span>}
+                </div>
+                <p>{post.data.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {papers.length > 0 && (
+      <section id="publications" class="b-section" aria-labelledby="publications-title">
+        <div class="b-section-heading">
+          <div>
+            <p class="b-eyebrow">Research output</p>
+            <h2 id="publications-title">Publications</h2>
+          </div>
+          <a href="/researches" class="b-section-link">
+            Full list <span class="i-ph-arrow-right" aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="mx-auto max-w-4xl">
+          <PublicationList papers={papers} />
+        </div>
+      </section>
+    )}
+
+    <section class="b-programme" aria-labelledby="programme-title">
+      <div class="b-programme-mark" aria-hidden="true">
+        <span class="i-mdi:school"></span>
+      </div>
+      <div class="min-w-0">
+        <div class="b-programme-meta">
+          <p class="b-eyebrow">AI evaluation · 2026</p>
+          <span class="b-programme-badge">Fully funded</span>
+        </div>
+        <h2 id="programme-title">International Programme on AI Evaluation: Capabilities &amp; Safety</h2>
+        <p class="b-programme-copy">
+          I joined a fully funded, 150-hour international academic programme focused on evaluating the capabilities and safety of frontier AI systems, culminating in an in-person capstone week in Valencia.
+        </p>
+        <a
+          href="https://ai-evaluation.org/vacancy"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="b-programme-link"
+        >
+          View programme <span class="i-ph-arrow-up-right" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .b-home { display: grid; gap: 0; }
+  .b-hero {
+    margin-inline: calc(50% - 50vw);
+    padding-inline: max(1rem, calc((100vw - 80rem) / 2));
+  }
+  .b-section { padding-block: 4.25rem; }
+  .b-news-section { padding-block: 3.25rem; }
+  .b-section + .b-section { border-top: 1px solid rgb(226 232 240 / 0.9); }
+  :global(html.dark) .b-section + .b-section { border-color: rgb(51 65 85 / 0.8); }
+  .b-section-heading {
+    display: flex; align-items: end; justify-content: space-between; gap: 1.5rem;
+    width: min(100%, 56rem); margin: 0 auto 2rem;
+  }
+  .b-section-heading h2 {
+    margin-top: 0.2rem; font-family: "Fraunces", serif;
+    font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.15; color: #0f172a;
+  }
+  :global(html.dark) .b-section-heading h2 { color: #f8fafc; }
+  .b-eyebrow {
+    color: #2563eb; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .b-section-link {
+    display: inline-flex; min-height: 2.75rem; align-items: center; gap: 0.4rem;
+    color: #2563eb; font-size: 0.95rem; font-weight: 700; text-decoration: none;
+  }
+  .b-section-link:hover { text-decoration: underline; text-underline-offset: 0.25rem; }
+  .b-news-list {
+    list-style: none; margin-block: 0; padding: 0;
+    border-top: 1px solid #e2e8f0;
+  }
+  .b-news-item {
+    display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1.25rem;
+    border-bottom: 1px solid #e2e8f0; padding-block: 1.15rem;
+  }
+  .b-news-item time {
+    padding-top: 0.15rem; color: #64748b; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.78rem; font-variant-numeric: tabular-nums;
+  }
+  .b-news-item h3 {
+    color: #0f172a; font-family: "Fraunces", serif; font-size: 1.12rem; font-weight: 600; line-height: 1.4;
+  }
+  .b-news-item p { margin-top: 0.3rem; color: #64748b; font-size: 0.98rem; line-height: 1.6; }
+  .b-news-latest {
+    display: inline-flex; align-items: center; border-radius: 999px; background: #dbeafe;
+    padding: 0.2rem 0.55rem; color: #1d4ed8; font-size: 0.65rem; font-weight: 800;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .b-social-link {
+    display: grid; width: 3rem; height: 3rem; place-items: center;
+    border: 1px solid #e2e8f0; border-radius: 999px;
+    background: rgb(255 255 255 / 0.9); color: #475569;
+    box-shadow: 0 4px 12px rgb(15 23 42 / 0.08);
+    transition: transform 180ms ease, box-shadow 180ms ease, color 180ms ease;
+  }
+  .b-social-link:hover {
+    color: #2563eb; box-shadow: 0 10px 24px rgb(37 99 235 / 0.16); transform: translateY(-2px);
+  }
+  .b-profile-note {
+    position: relative; max-width: 20rem; margin-top: 0.85rem; background: transparent;
+    color: #1e3a8a; font-family: "Fraunces", serif; font-size: 1.16rem;
+    font-style: italic; font-weight: 500; letter-spacing: -0.018em; line-height: 1.55;
+  }
+  .b-profile-note::before {
+    content: "“"; position: absolute; left: -0.7rem; top: -0.55rem;
+    color: #2563eb; font-family: "Fraunces", serif; font-size: 2.7rem;
+    font-style: normal; line-height: 1; opacity: 0.3;
+  }
+  .b-profile-wink {
+    display: inline-block; margin-left: 0.2rem; font-style: normal;
+    transform: rotate(-7deg); transform-origin: center;
+  }
+  .b-hero-eyebrow {
+    margin-bottom: 0.25rem; color: #2563eb; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase;
+  }
+  .b-biography-copy {
+    max-width: 46rem; margin-top: 1.15rem; color: #334155;
+    font-size: 1.075rem; line-height: 1.78;
+  }
+  .b-biography-copy + .b-biography-copy { margin-top: 0.75rem; }
+  .b-question-grid {
+    display: grid; gap: 0;
+    list-style: none; margin: 1.25rem 0 0; padding: 0;
+    border-top: 1px solid rgb(191 219 254 / 0.9);
+  }
+  .b-question-card {
+    display: grid; grid-template-columns: 2.25rem 12rem minmax(0, 1fr); gap: 0.9rem; align-items: baseline;
+    border-bottom: 1px solid rgb(191 219 254 / 0.9); background: transparent; padding-block: 0.9rem;
+  }
+  .b-question-number {
+    color: #2563eb; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  }
+  .b-question-label {
+    color: #1d4ed8; font-size: 0.73rem; font-weight: 700;
+    letter-spacing: 0.06em; line-height: 1.4; text-transform: uppercase;
+  }
+  .b-question-copy { color: #334155; font-size: 0.98rem; line-height: 1.55; }
+  .b-currently {
+    display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1.25rem;
+    margin-top: 1rem; border: 1px solid rgb(191 219 254 / 0.72); border-radius: 0.9rem;
+    background: rgb(239 246 255 / 0.62); padding: 1rem 1.15rem;
+  }
+  .b-currently-heading { display: flex; align-items: center; gap: 0.55rem; }
+  .b-currently-heading h3 { color: #1e3a8a; font-family: "Fraunces", serif; font-size: 1.08rem; font-weight: 600; }
+  .b-currently-pulse {
+    width: 0.5rem; height: 0.5rem; border-radius: 999px; background: #22c55e;
+    box-shadow: 0 0 0 4px rgb(34 197 94 / 0.12);
+  }
+  .b-currently ul {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .b-currently li { color: #475569; font-size: 0.88rem; line-height: 1.5; }
+  .b-currently li::before { content: "↗"; margin-right: 0.35rem; color: #2563eb; font-weight: 800; }
+  .b-programme {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; align-items: start;
+    width: min(100%, 56rem); margin: 0 auto; border-top: 1px solid #e2e8f0; padding-block: 3.5rem 4.5rem;
+  }
+  .b-programme-mark {
+    display: grid; width: 3rem; height: 3rem; place-items: center; border: 1px solid #93c5fd;
+    border-radius: 0.85rem; background: #eff6ff; color: #2563eb; font-size: 1.3rem;
+  }
+  .b-programme-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; }
+  .b-programme-badge {
+    display: inline-flex; align-items: center; border-radius: 999px; background: #dcfce7;
+    padding: 0.22rem 0.6rem; color: #166534; font-size: 0.68rem; font-weight: 800;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .b-programme h2 {
+    margin-top: 0.2rem; color: #0f172a; font-family: "Fraunces", serif;
+    font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 700;
+  }
+  .b-programme-copy { margin-top: 0.65rem; max-width: 42rem; color: #64748b; font-size: 0.95rem; line-height: 1.7; }
+  .b-programme-link {
+    display: inline-flex; min-height: 2.75rem; align-items: center; gap: 0.35rem; margin-top: 0.75rem;
+    color: #2563eb; font-size: 0.88rem; font-weight: 750; text-decoration: none;
+  }
+  .b-programme-link:hover { text-decoration: underline; text-underline-offset: 0.22rem; }
+  :global(html.dark) .b-social-link {
+    border-color: #334155; background: rgb(30 41 59 / 0.9); color: #cbd5e1;
+  }
+  :global(html.dark) .b-profile-note { color: #dbeafe; }
+  :global(html.dark) .b-profile-note::before { color: #93c5fd; }
+  :global(html.dark) .b-biography-copy { color: #cbd5e1; }
+  :global(html.dark) .b-question-card { border-color: rgb(30 64 175 / 0.65); background: rgb(15 23 42 / 0.48); }
+  :global(html.dark) .b-question-number,
+  :global(html.dark) .b-question-label { color: #93c5fd; }
+  :global(html.dark) .b-question-copy { color: #cbd5e1; }
+  :global(html.dark) .b-currently { border-color: rgb(30 64 175 / 0.6); background: rgb(30 58 138 / 0.2); }
+  :global(html.dark) .b-currently-heading h3 { color: #dbeafe; }
+  :global(html.dark) .b-currently li { color: #cbd5e1; }
+  :global(html.dark) .b-programme { border-color: #334155; }
+  :global(html.dark) .b-programme-mark { border-color: #1d4ed8; background: rgb(30 58 138 / 0.28); color: #93c5fd; }
+  :global(html.dark) .b-programme h2 { color: #f8fafc; }
+  :global(html.dark) .b-programme-copy { color: #94a3b8; }
+  :global(html.dark) .b-programme-badge { background: rgb(20 83 45 / 0.55); color: #bbf7d0; }
+  :global(html.dark) .b-programme-link { color: #93c5fd; }
+  :global(html.dark) .b-news-list,
+  :global(html.dark) .b-news-item { border-color: #334155; }
+  :global(html.dark) .b-news-item h3 { color: #f8fafc; }
+  :global(html.dark) .b-news-item p,
+  :global(html.dark) .b-news-item time { color: #94a3b8; }
+  :global(html.dark) .b-news-latest { background: rgb(30 58 138 / 0.55); color: #bfdbfe; }
+  @media (max-width: 900px) {
+    .b-question-card { grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem; }
+    .b-question-label { grid-column: 2; }
+    .b-question-copy { grid-column: 2; }
+    .b-currently { grid-template-columns: 1fr; gap: 0.8rem; }
+    .b-currently ul { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+  @media (max-width: 639px) {
+    .b-section { padding-block: 4rem; }
+    .b-news-section { padding-block: 3rem; }
+    .b-section-heading { align-items: start; }
+    .b-news-item { grid-template-columns: 1fr; gap: 0.35rem; }
+    .b-question-card { grid-template-columns: 1.75rem minmax(0, 1fr); }
+    .b-currently { grid-template-columns: 1fr; gap: 0.8rem; }
+    .b-currently ul { grid-template-columns: 1fr; gap: 0.5rem; }
+    .b-programme { padding-block: 3rem 3.75rem; }
+  }
+</style>

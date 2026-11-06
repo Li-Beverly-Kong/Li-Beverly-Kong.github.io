@@ -1,0 +1,100 @@
+---
+import type { BibEntry } from "../lib/bibtex";
+import siteConfig from "../side.config";
+
+interface Props { papers: BibEntry[]; }
+
+const { papers } = Astro.props;
+---
+
+<div>
+  <ol data-publication-list class="b-publication-list">
+    {papers.map((paper) => {
+      return (
+        <li>
+          <article class="b-publication">
+            <span class="b-paper-icon i-mdi:file-document-outline" aria-hidden="true"></span>
+            <div class="min-w-0">
+              <p class="b-citation-line">
+                <span class="b-authors">
+                  {paper.authors.map((author, index) => (
+                    <>
+                      <span class:list={[author === siteConfig.author && "b-site-author"]}>{author}</span>
+                      {index < paper.authors.length - 1 && <span>, </span>}
+                    </>
+                  ))}
+                </span>
+                {paper.year && <span> ({paper.year}). </span>}
+                {paper.url ? (
+                  <a href={paper.url} target="_blank" rel="noopener noreferrer" class="b-paper-title">
+                    {paper.title}
+                  </a>
+                ) : (
+                  <span class="b-paper-title-static">{paper.title}</span>
+                )}
+                <span>. </span>
+                {paper.venue && <em>{paper.venue}</em>}
+                {paper.venue && <span>.</span>}
+              </p>
+
+              <div class="b-paper-actions">
+                {paper.url && (
+                  <a href={paper.url} target="_blank" rel="noopener noreferrer" class="b-paper-action">
+                    <span class="i-mdi:file-pdf-box" aria-hidden="true"></span>
+                    Paper
+                  </a>
+                )}
+                {paper.doi && (
+                  <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer" class="b-paper-action">
+                    <span class="i-mdi:open-in-new" aria-hidden="true"></span>
+                    DOI
+                  </a>
+                )}
+                {paper.abstract && (
+                  <details class="b-abstract group">
+                    <summary class="b-paper-action cursor-pointer list-none">
+                      <span class="i-mdi:chevron-down transition-transform group-open:rotate-180" aria-hidden="true"></span>
+                      Abstract
+                    </summary>
+                    <p>{paper.abstract}</p>
+                  </details>
+                )}
+              </div>
+            </div>
+          </article>
+        </li>
+      );
+    })}
+  </ol>
+
+</div>
+
+<style>
+  .b-publication-list { margin: 0; list-style: none; padding: 0; }
+  .b-publication-list > li + li { margin-top: 1.55rem; }
+  .b-publication { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
+  .b-paper-icon { margin-top: 0.22rem; color: #64748b; font-size: 1.15rem; }
+  .b-citation-line { color: #334155; font-size: 1rem; line-height: 1.75; }
+  .b-site-author { font-weight: 700; color: #0f172a; }
+  .b-paper-title, .b-paper-title-static { font-weight: 700; }
+  .b-paper-title { color: #2563eb; text-decoration: none; }
+  .b-paper-title:hover { text-decoration: underline; text-underline-offset: 0.2rem; }
+  .b-paper-actions { display: flex; flex-wrap: wrap; align-items: start; gap: 0.65rem; margin-top: 0.5rem; }
+  .b-paper-action {
+    display: inline-flex; min-height: 1.8rem; align-items: center; gap: 0.3rem;
+    border: 0; background: transparent; padding: 0; color: #2563eb;
+    font: inherit; font-size: 0.78rem; font-weight: 700; text-decoration: none;
+  }
+  .b-paper-action:hover { color: #1d4ed8; text-decoration: underline; text-underline-offset: 0.18rem; }
+  .b-abstract { flex-basis: auto; }
+  .b-abstract[open] { flex-basis: 100%; }
+  .b-abstract p {
+    margin-top: 0.65rem; border-left: 2px solid #93c5fd; padding-left: 0.9rem;
+    color: #475569; font-size: 0.9rem; line-height: 1.65;
+  }
+  :global(html.dark) .b-paper-icon { color: #94a3b8; }
+  :global(html.dark) .b-citation-line { color: #cbd5e1; }
+  :global(html.dark) .b-site-author { color: #f8fafc; }
+  :global(html.dark) .b-paper-title, :global(html.dark) .b-paper-action { color: #93c5fd; }
+  :global(html.dark) .b-abstract p { border-color: #2563eb; color: #cbd5e1; }
+</style>

@@ -1,0 +1,74 @@
+profile:
+  - label: Current Role
+    value: Graduate Student in Artificial Intelligence, Renmin University of China
+  - label: Research Areas
+    value: Decision optimization, mechanism design, LLM evaluation, and LLM post-training
+  - label: Location
+    value: Beijing, China
+
+experience:
+  - role: Algorithm Intern, TikTok User Growth
+    organization: ByteDance
+    period: Jan 2025 - Jan 2026
+    bullets:
+      - Worked on user growth modeling and intelligent coupon allocation for TikTok Shop's Latin America new-user scenarios.
+      - Co-authored an AAAI 2026 paper on sequence-aware coupon allocation, validated in Southeast Asia returning-user recall scenarios.
+      - Improved offline AUCC by 26% while iterating decision-focused learning methods for Mexico new-user growth optimization.
+  - role: Algorithm Intern, AI Product Innovation Department
+    organization: Baidu
+    period: Jul 2024 - Nov 2024
+    bullets:
+      - Developed LLM-powered suggestion recommendation for the Wenxiaoyan app.
+      - Built data filtering and supervised fine-tuning workflows that improved suggestion diversity and quality.
+      - Collaborated on large-scale sample generation, diversity optimization, and sharded deployment experiments.
+  - role: Participant, International Programme on AI Evaluation Capabilities & Safety
+    organization: Full-funded academic programme
+    period: Feb 2026 - May 2026
+    bullets:
+      - Studied frontier topics in LLM evaluation and developed ongoing research on evaluation awareness.
+
+education:
+  - degree: M.S. Student, Artificial Intelligence
+    institution: Gaoling School of Artificial Intelligence, Renmin University of China
+    year: 2025 - 2028
+  - degree: B.S., Computer Science and Technology
+    institution: Xu Teli College, Beijing Institute of Technology
+    year: 2021 - 2025
+
+service:
+  - role: Delegate and Standing Representative
+    organization: 35th Student Congress of Beijing Institute of Technology
+    period: Undergraduate service
+
+sections:
+  - title: Awards
+    icon: i-mdi:trophy-award
+    items:
+      - title: Finalist Award
+        subtitle: Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling
+        description: Top 1%.
+      - title: National Third Prize
+        subtitle: Asia and Pacific Mathematical Contest in Modeling
+  - title: Teaching
+    icon: i-mdi:school-outline
+    items:
+      - title: Teaching Assistant, Optimization (Honors Course)
+        date: Spring 2025-2026
+  - title: Skills & Languages
+    icon: i-mdi:tools
+    items:
+      - title: Programming
+        description: Python, C, C++, PyTorch, and TensorFlow.
+      - title: Tools
+        description: LaTeX, VS Code, Anaconda, Linux command line, and Microsoft Office.
+      - title: Languages
+        description: Chinese, English, and Cantonese.
+  - title: Research Perspective
+    icon: i-mdi:lightbulb-outline
+    items:
+      - title: Mathematical craft
+        description: I enjoy the craft of proof and the quiet pleasure of making an idea mathematically clean, while persistently pursuing frontier problems around large language models.
+      - title: Optimization and incentives
+        description: My work often alternates between designing mechanisms that leave players no unintended room to optimize against a system and finding the best response under constraints myself.
+      - title: Computation and consciousness
+        description: I lean toward a materialist monism, viewing human consciousness and AI awareness as abstractions over physical and computational processes rather than independent substances.

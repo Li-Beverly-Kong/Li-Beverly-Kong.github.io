@@ -1,44 +1,42 @@
-# Li Beverly Kong Academic Homepage
+# Li Kong Academic Homepage
 
-This repository is a fresh customization of the open-source [Academic Pages](https://github.com/academicpages/academicpages.github.io) GitHub Pages template.
+This repository contains Li Kong's academic homepage, built with Astro and the
+open-source Scholar Pages template.
 
-The current structure is:
+## Content map
 
-- Home: personal information, external sites, academic statement, and research interests.
-- Publications: maintained through `_publications/`.
-- Internships: maintained through `_internships/`.
-- Teaching: maintained through `_teaching/`.
-- CV: standalone structured CV page.
+- `site.config.ts` — identity, navigation, profile links, page copy, and homepage sections.
+- `src/data/publications.bib` — publications and manuscripts.
+- `src/data/about.yml` — structured CV content.
+- `src/content/projects/` — internship records (the template's project collection is reused internally).
+- `src/content/teaching/` — teaching records.
+- `src/content/posts/` — news and academic updates.
+- `public/profile.png` — homepage profile image.
 
-## Key Files
+## Local development
 
-- `_config.yml`: site metadata, sidebar identity, links, and collections.
-- `_data/navigation.yml`: top navigation.
-- `_pages/about.md`: home page.
-- `_pages/publications.html`: publications page.
-- `_pages/internships.md`: internships page.
-- `_pages/teaching.html`: teaching page.
-- `_pages/cv.md`: CV page.
-- `_includes/head/custom.html`: visual customization.
+Requires Node.js 22.13+ and pnpm 11+.
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Run the full validation suite before deployment:
+
+```bash
+ASTRO_TELEMETRY_DISABLED=1 pnpm verify
+```
+
+The production site is generated in `dist/`.
 
 ## Deployment
 
-Push to the `main` branch of:
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which validates,
+builds, and deploys `dist/` to GitHub Pages.
 
-```text
-Li-Beverly-Kong/Li-Beverly-Kong.github.io
-```
+## Credits
 
-GitHub Pages will build the Jekyll site automatically.
-
-## Adding Content
-
-Add real entries as Markdown files in:
-
-```text
-_publications/
-_internships/
-_teaching/
-```
-
-The original Academic Pages sample posts, publications, talks, teaching entries, portfolio entries, and sample PDFs have been removed so the live site does not show template content.
+The current design is based on
+[Scholar Pages](https://github.com/jxpeng98/astro-theme-scholars). Its MIT
+license is preserved in `LICENSE-SCHOLAR-PAGES`.
