@@ -20,18 +20,18 @@ const biographyEducation =
   "I am a second-year master's student at the Gaoling School of Artificial Intelligence, Renmin University of China. I received my B.S. in Computer Science and Technology from Xu Teli Honors College, Beijing Institute of Technology.";
 const biographyResearch =
   "I am an AI researcher interested in problems that are both intellectually intriguing and practically meaningful. My research interests span large language models, mechanism design, and intelligent systems, and I enjoy exploring new ideas across different areas of AI.";
-const researchQuestions = [
+const researchInterests = [
   {
-    label: "Interpretable mechanism design",
-    question: "How can learned mechanisms remain interpretable and auditable?",
+    label: "Intelligence",
+    statement: "How AI learns, reasons, and evolves.",
   },
   {
-    label: "Efficient language models",
-    question: "How can LLM training and serving become more efficient without sacrificing quality?",
+    label: "Capability",
+    statement: "Making intelligent systems better, faster, and more reliable.",
   },
   {
-    label: "Decision optimization",
-    question: "How can predictive models support reliable large-scale decisions?",
+    label: "Interaction",
+    statement: "Where intelligence meets incentives, decisions, and the real world.",
   },
 ];
 const currentFocus = [
@@ -114,21 +114,21 @@ const profileImageUrl = /^https?:/i.test(rawProfileImage)
             {biographyResearch}
           </p>
 
-          <div class="mt-8">
-            <div>
-              <p class="b-hero-eyebrow">What I think about</p>
-              <h3 class="font-heading text-[1.9rem] font-semibold leading-tight tracking-[-0.025em] text-ink-950 dark:text-white">Research Questions</h3>
-            </div>
-            <ul class="b-question-grid">
-              {researchQuestions.map((item, index) => (
-                <li class="b-question-card">
-                  <span class="b-question-number">0{index + 1}</span>
-                  <p class="b-question-label">{item.label}</p>
-                  <p class="b-question-copy">{item.question}</p>
+          <section class="b-interests" aria-labelledby="interests-title">
+            <p class="b-interests-eyebrow">A few things that excite me</p>
+            <h3 id="interests-title">Things I Find Interesting</h3>
+            <ol class="b-interests-list">
+              {researchInterests.map((item, index) => (
+                <li class="b-interest-item">
+                  <p class="b-interest-label">
+                    <span aria-hidden="true">0{index + 1}</span>
+                    <span>{item.label}</span>
+                  </p>
+                  <p class="b-interest-statement">{item.statement}</p>
                 </li>
               ))}
-            </ul>
-          </div>
+            </ol>
+          </section>
 
           <aside class="b-currently" aria-labelledby="currently-title">
             <div class="b-currently-heading">
@@ -298,24 +298,34 @@ const profileImageUrl = /^https?:/i.test(rawProfileImage)
     font-size: 1.075rem; line-height: 1.78;
   }
   .b-biography-copy + .b-biography-copy { margin-top: 0.75rem; }
-  .b-question-grid {
-    display: grid; gap: 0;
-    list-style: none; margin: 1.25rem 0 0; padding: 0;
-    border-top: 1px solid rgb(191 219 254 / 0.9);
+  .b-interests {
+    margin-top: 2rem; overflow: hidden; border: 1px solid rgb(30 58 138 / 0.34);
+    border-radius: 1.35rem; background: #080d22; padding: 1.45rem 1.55rem 0;
+    box-shadow: 0 18px 42px rgb(15 23 42 / 0.14);
   }
-  .b-question-card {
-    display: grid; grid-template-columns: 2.25rem 12rem minmax(0, 1fr); gap: 0.9rem; align-items: baseline;
-    border-bottom: 1px solid rgb(191 219 254 / 0.9); background: transparent; padding-block: 0.9rem;
+  .b-interests-eyebrow {
+    color: #93c5fd; font-size: 0.68rem; font-weight: 750;
+    letter-spacing: 0.13em; text-transform: uppercase;
   }
-  .b-question-number {
-    color: #2563eb; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  .b-interests h3 {
+    margin-top: 0.5rem; color: #f8fafc; font-family: "Fraunces", serif;
+    font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 650; line-height: 1.2;
+    letter-spacing: -0.025em;
   }
-  .b-question-label {
-    color: #1d4ed8; font-size: 0.73rem; font-weight: 700;
-    letter-spacing: 0.06em; line-height: 1.4; text-transform: uppercase;
+  .b-interests-list { list-style: none; margin: 1.25rem 0 0; padding: 0; }
+  .b-interest-item {
+    border-top: 1px solid rgb(96 165 250 / 0.32); padding-block: 1rem 1.05rem;
   }
-  .b-question-copy { color: #334155; font-size: 0.98rem; line-height: 1.55; }
+  .b-interest-label {
+    display: flex; align-items: center; gap: 0.42rem; color: #93c5fd;
+    font-size: 0.7rem; font-weight: 750; letter-spacing: 0.075em; text-transform: uppercase;
+  }
+  .b-interest-label span:first-child::after { content: "/"; margin-left: 0.42rem; opacity: 0.72; }
+  .b-interest-statement {
+    margin-top: 0.3rem; color: #eef2ff; font-family: "Fraunces", serif;
+    font-size: clamp(1rem, 1.8vw, 1.18rem); font-weight: 550; line-height: 1.45;
+    letter-spacing: -0.012em;
+  }
   .b-currently {
     display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1.25rem;
     margin-top: 1rem; border: 1px solid rgb(191 219 254 / 0.72); border-radius: 0.9rem;
@@ -363,10 +373,7 @@ const profileImageUrl = /^https?:/i.test(rawProfileImage)
   :global(html.dark) .b-profile-note { color: #dbeafe; }
   :global(html.dark) .b-profile-note::before { color: #93c5fd; }
   :global(html.dark) .b-biography-copy { color: #cbd5e1; }
-  :global(html.dark) .b-question-card { border-color: rgb(30 64 175 / 0.65); background: rgb(15 23 42 / 0.48); }
-  :global(html.dark) .b-question-number,
-  :global(html.dark) .b-question-label { color: #93c5fd; }
-  :global(html.dark) .b-question-copy { color: #cbd5e1; }
+  :global(html.dark) .b-interests { border-color: rgb(59 130 246 / 0.38); box-shadow: 0 20px 46px rgb(0 0 0 / 0.28); }
   :global(html.dark) .b-currently { border-color: rgb(30 64 175 / 0.6); background: rgb(30 58 138 / 0.2); }
   :global(html.dark) .b-currently-heading h3 { color: #dbeafe; }
   :global(html.dark) .b-currently li { color: #cbd5e1; }
@@ -383,9 +390,6 @@ const profileImageUrl = /^https?:/i.test(rawProfileImage)
   :global(html.dark) .b-news-item time { color: #94a3b8; }
   :global(html.dark) .b-news-latest { background: rgb(30 58 138 / 0.55); color: #bfdbfe; }
   @media (max-width: 900px) {
-    .b-question-card { grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem; }
-    .b-question-label { grid-column: 2; }
-    .b-question-copy { grid-column: 2; }
     .b-currently { grid-template-columns: 1fr; gap: 0.8rem; }
     .b-currently ul { grid-template-columns: 1fr; gap: 0.5rem; }
   }
@@ -394,7 +398,7 @@ const profileImageUrl = /^https?:/i.test(rawProfileImage)
     .b-news-section { padding-block: 3rem; }
     .b-section-heading { align-items: start; }
     .b-news-item { grid-template-columns: 1fr; gap: 0.35rem; }
-    .b-question-card { grid-template-columns: 1.75rem minmax(0, 1fr); }
+    .b-interests { border-radius: 1.15rem; padding: 1.25rem 1.2rem 0; }
     .b-currently { grid-template-columns: 1fr; gap: 0.8rem; }
     .b-currently ul { grid-template-columns: 1fr; gap: 0.5rem; }
     .b-programme { padding-block: 3rem 3.75rem; }

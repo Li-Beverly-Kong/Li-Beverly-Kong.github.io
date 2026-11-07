@@ -140,6 +140,13 @@ assert(
 	"home page should render linked profile and website structured data",
 );
 assert(
+	index.includes('id="interests-title"') &&
+		index.includes("Things I Find Interesting") &&
+		index.includes("How AI learns, reasons, and evolves.") &&
+		!index.includes("Research Questions"),
+	"home page should render the concise research interests panel",
+);
+assert(
 	index.includes('meta name="astro-view-transitions-enabled" content="true"'),
 	"pages should enable Astro client-side navigation",
 );
